@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataType) => {
   const Category = sequelize.define('Category', {
     id: {
