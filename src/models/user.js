@@ -1,7 +1,7 @@
 const { use } = require('frisby');
 
-const createUser = (sequelize, DataType) => {
-  const User = sequelize.define('user', {
+module.exports = (sequelize, DataType) => {
+  const User = sequelize.define('User', {
     id: {
       primaryKey: true,
       autoIncrement: true,
@@ -14,8 +14,10 @@ const createUser = (sequelize, DataType) => {
   },
     {
       timestamps: false,
+      underscored: true,
       tableName: 'users'
     }
   );
-  return user;
+
+  return User;
 }
