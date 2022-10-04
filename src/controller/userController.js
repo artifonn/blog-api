@@ -31,7 +31,7 @@ const getUserController = async (_req, res, next) => {
   }
 };
 
-const getUserId = async (req, res, next) => {
+const getUserIdController = async (req, res, next) => {
   try {
     const { id } = req.params;
     const userId = await userService.getUserIdController(id);
@@ -45,4 +45,4 @@ const getUserId = async (req, res, next) => {
   }
 };
 
-module.exports = { userController, getUserController, getUserId };
+module.exports = { userController, getUserController, getUserIdController };
