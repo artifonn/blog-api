@@ -5,4 +5,9 @@ const serviceUser = async ({ email, password, displayName, image }) => {
   return user;
 };
 
-module.exports = { serviceUser };
+const getUserController = async () => {
+  const user = await User.findAll({ attributes: { exclude: ['password'] } });
+  return user;
+};
+
+module.exports = { serviceUser, getUserController };

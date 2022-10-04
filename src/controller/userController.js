@@ -22,4 +22,13 @@ const userController = async (req, res, next) => {
   }
 };
 
-module.exports = { userController };
+const getUserController = async (req, res, next) => {
+  try {
+    const getUser = await userService.getUserController();
+    return res.status(200).json(getUser);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { userController, getUserController };
