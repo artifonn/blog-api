@@ -22,7 +22,7 @@ const userController = async (req, res, next) => {
   }
 };
 
-const getUserController = async (req, res, next) => {
+const getUserController = async (_req, res, next) => {
   try {
     const getUser = await userService.getUserController();
     return res.status(200).json(getUser);
@@ -31,4 +31,18 @@ const getUserController = async (req, res, next) => {
   }
 };
 
-module.exports = { userController, getUserController };
+const getUserId = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const userId = await userService.getUserIdController(id);
+
+    if (!userId) {
+      return res.status(404).json({ message: 'User does not exist' });
+    }
+    return res.status(200).json(userId);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { userController, getUserController, getUserId };

@@ -10,4 +10,9 @@ const getUserController = async () => {
   return user;
 };
 
-module.exports = { serviceUser, getUserController };
+const getUserIdController = async (id) => {
+  const user = await User.findOne({ where: { id }, attributes: { exclude: ['password'] } });
+  return user;
+};
+
+module.exports = { serviceUser, getUserController, getUserIdController };
